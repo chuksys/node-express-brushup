@@ -12,4 +12,6 @@ module.exports = (Sequelize, DataTypes) => {
             allowNull: false,
         },
     });
+
+    return Lead;
 };
