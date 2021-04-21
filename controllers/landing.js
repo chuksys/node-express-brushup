@@ -7,7 +7,7 @@ exports.get_landing = function(req, res, next) {
 
 exports.submit_lead = function(req, res, next) {
     return models.Lead.create({
-        email: req.body.lead_email,
+        email: req.body.email,
     }).then(lead => {
         res.redirect('/leads');
     })
@@ -26,5 +26,27 @@ exports.show_lead = function(req, res, next) {
         })
     }).then(lead => {
         res.render('leads/lead', {lead: lead})
+    })
+}
+
+exports.show_edit_lead = function(req, res, next) {
+    return models.Lead.findOne({
+        where: ({
+            id: req.params.id,
+        })
+    }).then(lead => {
+        res.render('leads/edit', {lead: lead})
+    }) 
+}
+
+exports.edit_lead = function(req, res, next) {
+    return models.Lead.update({
+        email: req.body.email
+    },{
+        where: ({
+            id: req.params.id,
+        })
+    }).then(result => {
+        res.redirect('/leads');
     })
 }
