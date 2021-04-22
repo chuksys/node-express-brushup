@@ -16,6 +16,10 @@ router.post('/login', user.login_user);
 //signup user
 router.post('/signup', user.signup_user);
 
+//logout user
+router.get('/logout', user.logout_user);
+router.post('/logout', user.logout_user);
+
 //get home page
 router.get('/', landing.get_landing);
 

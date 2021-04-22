@@ -1,11 +1,11 @@
 
 const models = require('../db/models');
 
-exports.get_landing = function(req, res, next) {
-    res.render('landing', { title: 'Node-Demo' });
+exports.get_landing = (req, res, next) => {
+    res.render('landing', { title: 'Node-Demo' , user: req.user});
 }
 
-exports.submit_lead = function(req, res, next) {
+exports.submit_lead = (req, res, next) => {
     return models.Lead.create({
         email: req.body.email,
     }).then(lead => {
@@ -13,13 +13,13 @@ exports.submit_lead = function(req, res, next) {
     })
 }
 
-exports.show_leads = function(req, res, next) {
+exports.show_leads = (req, res, next) => {
     return models.Lead.findAll().then(leads => {
         res.render('leads', {title: 'Leads', leads: leads});
     })
 }
 
-exports.show_lead = function(req, res, next) {
+exports.show_lead = (req, res, next) => {
     return models.Lead.findOne({
         where: ({
             id: req.params.id,
@@ -29,7 +29,7 @@ exports.show_lead = function(req, res, next) {
     })
 }
 
-exports.show_edit_lead = function(req, res, next) {
+exports.show_edit_lead = (req, res, next) => {
     return models.Lead.findOne({
         where: ({
             id: req.params.id,
@@ -39,7 +39,7 @@ exports.show_edit_lead = function(req, res, next) {
     }) 
 }
 
-exports.edit_lead = function(req, res, next) {
+exports.edit_lead = (req, res, next) => {
     return models.Lead.update({
         email: req.body.email
     },{
@@ -51,7 +51,7 @@ exports.edit_lead = function(req, res, next) {
     })
 }
 
-exports.delete_lead = function(req, res, next) {
+exports.delete_lead = (req, res, next) => {
     return models.Lead.destroy({
         where: ({
             id: req.params.id
@@ -61,7 +61,7 @@ exports.delete_lead = function(req, res, next) {
     })
 }
 
-exports.delete_lead_json = function(req, res, next) {
+exports.delete_lead_json = (req, res, next) => {
     return models.Lead.destroy({
         where: ({
             id: req.params.id
