@@ -8,7 +8,7 @@ I'm using Sequelize & Sequelize-CLI to manage the mysql database operations so w
 
 Authentication is also implemented using Passport.
 
-Authorization is implemented as well using express middlewares.
+Authorization is also implemented to restrict access to certain areas of the application to Admin Users only.
 
 CSS Styling is implemented using BootStrap.
 
