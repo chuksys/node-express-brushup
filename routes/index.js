@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-let landing = require('../controllers/landing');
-let user = require('../controllers/user');
+const landing = require('../controllers/landing');
+const user = require('../controllers/user');
+
+const { isLoggedIn, isAdmin } = require('../middleware/hasAuth');
 
 //show login page
 router.get('/login', user.show_login);
@@ -27,21 +29,21 @@ router.get('/', landing.get_landing);
 router.post('/', landing.submit_lead);
 
 //show all submited leads
-router.get('/leads', landing.show_leads);
+router.get('/leads', isAdmin, landing.show_leads);
 
 //show lead details
-router.get('/lead/:id', landing.show_lead);
+router.get('/lead/:id', isAdmin, landing.show_lead);
 
 //show edit lead view
-router.get('/lead/:id/edit', landing.show_edit_lead);
+router.get('/lead/:id/edit', isAdmin, landing.show_edit_lead);
 
 //edit lead
-router.post('/lead/:id/edit', landing.edit_lead);
+router.post('/lead/:id/edit', isAdmin, landing.edit_lead);
 
 //delete lead
-router.post('/lead/:id/delete', landing.delete_lead);
+router.post('/lead/:id/delete',  isAdmin, landing.delete_lead);
 
 //delete lead and return json response - intended for ajax calls
-router.post('/lead/:id/delete-json', landing.delete_lead_json);
+router.post('/lead/:id/delete-json', isAdmin, landing.delete_lead_json);
 
 module.exports = router;
