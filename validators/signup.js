@@ -1,6 +1,6 @@
 
 const validator = require('validator');
-const models = require('./db/models');
+const models = require('../db/models');
 
 const validateCreateUserFields = (errors, req) => {
     if (!validator.isEmail(req.body.email)) {
