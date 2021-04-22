@@ -2,7 +2,6 @@
 const models = require('../db/models');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const { session } = require('passport');
 require('../passport_setup')(passport);
 require('connect-flash');
 
