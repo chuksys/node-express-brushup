@@ -1,4 +1,4 @@
-Brushing up my Node-Express Skill
+Brushing up my Node-Express Skills :)
 
 In this project, I'm simply using NodeJS, ExpressJS, PUG and MYSQL to develop a landing page that enables a marketer collect the email address of a lead and then post this email address to a mysql table which was created to store Leads.
 
