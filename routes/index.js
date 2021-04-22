@@ -10,6 +10,12 @@ router.get('/login', user.show_login);
 //show signup page
 router.get('/signup', user.show_signup);
 
+//login user
+router.post('/login', user.login_user);
+
+//signup user
+router.post('/signup', user.signup_user);
+
 //get home page
 router.get('/', landing.get_landing);
 
