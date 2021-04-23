@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const apiRouter = require('./routes/api/index');
+const apiLeadsRouter = require('./routes/api/leads');
 require('./passport_setup')(passport)
 
 var app = express();
@@ -32,7 +32,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use('/api', apiRouter);
+app.use('/api/leads', apiLeadsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
