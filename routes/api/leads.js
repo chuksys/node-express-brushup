@@ -8,4 +8,10 @@ router.get('/', (req, res) => {
         .then(leads => res.status(200).send(leads));
 })
 
+router.post('/', (req, res) => {
+    return models.Lead.create({
+        email: req.body.email
+    }).then(lead => res.status(200).send(lead)); 
+})
+
 module.exports = router
