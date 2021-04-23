@@ -36,4 +36,23 @@ router.put('/:id', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    return models.Lead.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(lead => {
+        if(lead != null) {
+            return models.Lead.destroy({
+                where: {
+                    id: lead.id,
+                }
+            })
+            .then(lead => res.status(201).send({ Success: true }))
+        } else {
+            res.status(403).send({message: "Resource does not exist"});
+        }
+    })
+})
+
 module.exports = router
